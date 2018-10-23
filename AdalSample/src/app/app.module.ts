@@ -3,6 +3,9 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AdalService, AdalGuard, AdalInterceptor } from 'adal-angular4';
+
 import * as c from './';
 
 @NgModule({
@@ -15,7 +18,13 @@ import * as c from './';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    AdalService,
+    AdalGuard,
+    {
+      provide: HTTP_INTERCEPTORS, useClass: AdalInterceptor, multi: true
+    }
+  ],
   bootstrap: [c.AppComponent]
 })
 export class AppModule { }
