@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
     endpoints: {
       'https://dovahkiin.onmicrosoft.com/todolistservice': '6534594c-e5a0-4c11-9726-76e55823135b'
     }
-  }
+  };
 
   // private adalConfig = {
   //   tenant: 'selectedat.onmicrosoft.com',
@@ -26,11 +26,11 @@ export class AppComponent implements OnInit {
   //   }
   // }
 
-  constructor(private adal: AdalService){
+  constructor(private adal: AdalService) {
     this.adal.init(this.adalConfig);
   }
 
-  ngOnInit(){
+  ngOnInit() {
     this.adal.handleWindowCallback();
 
     if (!this.adal.userInfo.authenticated) {

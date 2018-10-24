@@ -9,22 +9,17 @@ import { AdalService, AdalGuard, AdalInterceptor } from 'adal-angular4';
 import * as c from './';
 
 @NgModule({
-  declarations: [
-    c.AppComponent,
-    c.MainComponent,
-    c.HomeComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  declarations: [c.AppComponent, c.MainComponent, c.HomeComponent],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [
     AdalService,
     AdalGuard,
     {
-      provide: HTTP_INTERCEPTORS, useClass: AdalInterceptor, multi: true
+      provide: HTTP_INTERCEPTORS,
+      useClass: AdalInterceptor,
+      multi: true
     }
   ],
   bootstrap: [c.AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
