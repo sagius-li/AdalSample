@@ -10,21 +10,31 @@ import { AdalService } from 'adal-angular4';
 export class AppComponent implements OnInit {
   title = 'AdalSample';
 
-  private adalConfig = {
-    tenant: '2c1495b8-37c4-482c-8e5c-f8548307423d',
-    clientId: '0eb6f069-2e81-409f-a1cb-1732b4498c94',
-    endpoints: {
-      'https://dovahkiin.onmicrosoft.com/todolistservice': '6534594c-e5a0-4c11-9726-76e55823135b'
-    }
-  };
+  // private adalConfig = {
+  //   tenant: '2c1495b8-37c4-482c-8e5c-f8548307423d',
+  //   clientId: '0eb6f069-2e81-409f-a1cb-1732b4498c94',
+  //   endpoints: {
+  //     'https://dovahkiin.onmicrosoft.com/todolistservice': '6534594c-e5a0-4c11-9726-76e55823135b'
+  //   }
+  // };
 
   // private adalConfig = {
   //   tenant: 'selectedat.onmicrosoft.com',
   //   clientId: '1c7a1157-3834-4bfd-92e1-fb6799c6d3c4',
   //   endpoints: {
-  //     'https://idcloudeditionservice2.azurewebsites.net': '426bafb3-9244-4000-bb89-461908fe0a35'
+  //     'https://idcloudeditionservice2.azurewebsites.net':
+  //       'https://idcloudeditionservice2.azurewebsites.net'
   //   }
-  // }
+  // };
+
+  private adalConfig = {
+    tenant: 'selectedat.onmicrosoft.com',
+    clientId: '705c2d51-0345-4fff-a483-0bdf39bcc673',
+    endpoints: {
+      'https://idcloudeditionservice2.azurewebsites.net':
+        'https://idcloudeditionservice2.azurewebsites.net'
+    }
+  };
 
   constructor(private adal: AdalService) {
     this.adal.init(this.adalConfig);
