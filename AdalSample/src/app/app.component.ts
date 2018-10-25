@@ -18,21 +18,11 @@ export class AppComponent implements OnInit {
   //   }
   // };
 
-  // private adalConfig = {
-  //   tenant: 'selectedat.onmicrosoft.com',
-  //   clientId: '1c7a1157-3834-4bfd-92e1-fb6799c6d3c4',
-  //   endpoints: {
-  //     'https://idcloudeditionservice2.azurewebsites.net':
-  //       'https://idcloudeditionservice2.azurewebsites.net'
-  //   }
-  // };
-
   private adalConfig = {
     tenant: 'selectedat.onmicrosoft.com',
     clientId: '705c2d51-0345-4fff-a483-0bdf39bcc673',
     endpoints: {
-      'https://idcloudeditionservice2.azurewebsites.net':
-        'https://idcloudeditionservice2.azurewebsites.net'
+      'https://idcloudeditionservice2.azurewebsites.net': '426bafb3-9244-4000-bb89-461908fe0a35'
     }
   };
 

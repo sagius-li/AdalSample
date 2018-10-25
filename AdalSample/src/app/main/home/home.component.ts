@@ -9,30 +9,34 @@ import { AdalService } from 'adal-angular4';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  query = '';
+  query = '/user';
+  resources: any[] = [];
 
-  private prepareOptions(): any {
-    let headers = new HttpHeaders();
-    headers = headers
-      .set('Content-Type', 'application/json;')
-      .set('Accept', 'application/json;')
-      .set('Authorization', `Bearer ${this.adal.userInfo.token}`);
-    return { headers };
+  headers: HttpHeaders;
+
+  constructor(private http: HttpClient, private adal: AdalService) {
+    this.headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const jwt = adal.userInfo.token;
+    this.headers.append('Authorization', 'Bearer ' + jwt);
   }
-
-  constructor(private http: HttpClient, private adal: AdalService) {}
 
   ngOnInit() {}
 
   onApplyQuery() {
     this.http
       .get(
-        'https://idcloudeditionservice2.azurewebsites.net/api/v2/resources?filter=/person',
-        this.prepareOptions()
+        `https://idcloudeditionservice2.azurewebsites.net/api/v2/resources?filter=${this.query}`,
+        {
+          headers: this.headers
+        }
       )
       .subscribe(
-        data => {
-          console.log(data);
+        (data: any) => {
+          if (data && data.Results && data.Results.length > 0) {
+            this.resources = data.Results;
+          } else {
+            this.resources = [];
+          }
         },
         error => {
           console.log(error);

@@ -7,6 +7,6 @@
 <div>
   <button (click)="onApplyQuery()">Apply</button>
 </div>
-<ul>
-  <li></li>
+<ul *ngIf="resources && resources.length > 0">
+  <li *ngFor="let resource of resources">{{resource.displayname}} ({{resource.accountname}})</li>
 </ul>
